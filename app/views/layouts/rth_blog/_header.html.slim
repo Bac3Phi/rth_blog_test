@@ -1,0 +1,43 @@
+header[role="banner"]
+  .top-bar
+    .container
+      .row
+        .col-9.social
+          a[href="#"]
+            span.fa.fa-twitter
+          a[href="#"]
+            span.fa.fa-facebook
+          a[href="#"]
+            span.fa.fa-instagram
+          a[href="#"]
+            span.fa.fa-youtube-play
+        .col-3.search-top
+          form.search-top-form[action="#"]
+            span.icon.fa.fa-search
+            input#s[type="text" placeholder="Type keyword to search..."]
+  .container.logo-wrap
+    .row.pt-5
+      .col-12.text-center
+        a.absolute-toggle.d-block.d-md-none[data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"]
+          span.burger-lines
+        h1.site-logo
+          a[href="#{root_path}"]
+            | RTH Blog
+  nav.navbar.navbar-expand-md.navbar-light.bg-light
+    .container
+      #navbarMenu.collapse.navbar-collapse
+        ul.navbar-nav.mx-auto
+          li.nav-item
+            a.nav-link.active[href="#{root_path}"]
+              | Home
+          li.nav-item
+            a.nav-link[href="#about"]
+              | About
+          - if user_signed_in?
+            li.nav-item
+              = link_to "Log out", destroy_user_session_path, method: :delete, class:"nav-link"
+          - else
+            li.nav-item
+              = link_to "Login", new_user_session_path, class:"nav-link"
+            li.nav-item
+              = link_to "Sign Up", new_user_registration_path, class:"nav-link"

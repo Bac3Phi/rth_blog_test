@@ -1,0 +1,9 @@
+//= require jquery-3.2.1.min
+//= require bootstrap.min
+//= require jquery-migrate-3.0.0
+//= require jquery.stellar.min
+//= require jquery.waypoints.min
+//= require owl.carousel.min
+//= require popper.min
+//= require main
+//= require toastr

@@ -1,0 +1,23 @@
+- content_for :devise_form do
+  section.site-section.py-sm
+    .container
+      .row
+        .col-md-6
+          h2.mt-4
+            | Log In
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+            = f.label :email, class:"label"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+        .form-group
+            = f.label :password, class:"label"
+            = f.password_field :password, autocomplete: "current-password", class: "form-control"
+        .form-group
+            - if devise_mapping.rememberable?
+              = f.check_box :remember_me
+              = f.label :remember_me
+        .form-group
+          = f.submit "Log in", class: "btn btn-default"
+      hr.border.mt-6
+      = render "devise/shared/links"
+= render "devise/shared/form_wrap"
