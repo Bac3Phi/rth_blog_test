@@ -1,0 +1,13 @@
+| $('.form-group').find('div[class=invalid-feedback]').remove();
+| $(".form-control").removeClass('is-invalid');
+- if @errors and @errors.present?
+  | toastr['error']("Create fail");
+  - @errors.each do |key, value|
+    | selector = "#post_" + "#{key.to_s}";
+    | $(selector).closest('.form-group').append("<div class='invalid-feedback'>
+    = escape_javascript(value.join(";"))
+    | </div>");
+    | $(selector).addClass('is-invalid');
+- else
+  | window.location = "#{ posts_path }";
+  | toastr['success']("Post successfully created ")

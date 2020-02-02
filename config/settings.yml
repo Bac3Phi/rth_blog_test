@@ -1,0 +1,20 @@
+default: &default
+  email:
+    mail_address_info: 'buy2build@b2b.com'
+  paging:
+    per: 12
+development:
+  <<: *default
+  domain: 'localhost:3000'
+
+test:
+  <<: *default
+  domain: 'localhost:3000'
+
+staging:
+  <<: *default
+  domain: ''
+
+production:
+  <<: *default
+  domain: ''

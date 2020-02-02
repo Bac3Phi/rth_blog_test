@@ -1,0 +1,24 @@
+section.site-section.py-lg
+  .container
+    .row.blog-entries.element-animate
+      .col-md-12.col-lg-12.main-content
+        = image_tag @post.feature_image, class: 'img-fluid mb-5' if @post.feature_image.attached?
+        .post-meta
+          span.author.mr-2
+            =  @post.user.name
+          | • 
+          span.mr-2
+            = @post.created_at.strftime('%B %d, %Y')
+          | • 
+          span.ml-2
+            span.fa.fa-comments  #{@post.comments_count}
+        h1.mb-4
+          = @post.title
+        .post-content-body
+          = @post.body.to_s
+        .pt-5
+          h3.mb-5
+            = @post.comments_count
+            |  Comments
+          = render 'posts/parts/comments', post: @post
+          = render 'posts/parts/form_comment', post: @post

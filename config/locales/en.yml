@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  post_fillter:
+    created_at_desc: "Created at Descending"
+    created_at_asc: "Created at Ascending"
+    updated_at_desc: "Updated at Descending"
+    updated_at_asc: "Updated at Ascending"

@@ -1,0 +1,29 @@
+.col-md-12.col-lg-12.main-content
+  .row
+    - if posts.present?
+      - posts.each do |post|
+        .col-md-4
+          .blog-entry.element-animate
+            = link_to post_path(post) do
+              .fit-image
+                = image_tag post.feature_image if post.feature_image.attached?
+            .blog-content-body
+              .post-meta
+                span.author.mr-2
+                  =  post.user.name
+                | • 
+                span.mr-2
+                  = post.created_at.strftime('%B %d, %Y')
+                | •
+                span.ml-2
+                  span.fa.fa-comments  #{post.comments_count}
+              h2
+                = post.title.truncate(30)
+              = link_to 'Show', post_path(post), class: 'btn btn-info'
+              = link_to 'Edit', edit_post_path(post), class: 'btn btn-warning'
+              = link_to 'Delete', post_path(post), method: :delete,
+                data: {remote: true, confirm: "Are you sure? It can't undo."},
+                class: 'btn btn-danger'
+    - else
+      .col-md-12
+        h3.text-center Not Found Data

@@ -1,0 +1,21 @@
+= form_for post, local: true, html: { novalidate: true, remote: true } do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.rich_text_area :body, class: 'form-control'
+  .form-group
+    = f.label :feature_image, class: "label"
+    .dropzone.dropzone-default.dz-clickable[data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1"]
+      = f.file_field :feature_image, direct_upload: true, data: { target: 'dropzone.input' }
+      .dropzone-msg.dz-message.needsclick.text-gray-600
+        h3.dropzone-msg-title
+          | Drag here to upload or click here to browse
+        span.dropzone-msg-desc.text-sm
+          | 2 MB file size maximum. Allowed file types png, jpg.
+    - if post.feature_image.attached?
+      .mt-3
+        = image_tag(post.feature_image, width: "300px")
+  .form-group
+    = f.submit class: 'btn btn-primary'

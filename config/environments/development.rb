@@ -64,4 +64,12 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+  # Bullet Configuration
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.unused_eager_loading_enable = false
+  end
 end

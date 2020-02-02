@@ -3,364 +3,57 @@ section.site-section.pt-5.pb-5
     .row
       .col-md-12
         .owl-carousel.owl-theme.home-slider
-          div
-            a.a-block.d-flex.align-items-center.height-lg[href="blog-single.html" style="background-image: url('images/img_1.jpg'); "]
-
-            .text.half-to-full
-              span.category.mb-5
-                | Food
-              .post-meta
-                span.author.mr-2
-                  img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                  |  Colorlib
-                | ? 
-                span.mr-2
-                  | March 15, 2018 
-                |  ? 
-                span.ml-2
-                  span.fa.fa-comments
-                  |  3
-              h3
-                | How to Find the Video Games of Your Youth
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!
-          div
-            a.a-block.d-flex.align-items-center.height-lg[href="blog-single.html" style="background-image: url('images/img_2.jpg'); "]
-
-            .text.half-to-full
-              span.category.mb-5
-                | Travel
-              .post-meta
-                span.author.mr-2
-                  img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                  |  Colorlib
-                | ? 
-                span.mr-2
-                  | March 15, 2018 
-                |  ? 
-                span.ml-2
-                  span.fa.fa-comments
-                  |  3
-              h3
-                | How to Find the Video Games of Your Youth
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!
-          div
-            a.a-block.d-flex.align-items-center.height-lg[href="blog-single.html" style="background-image: url('images/img_3.jpg'); "]
-
-            .text.half-to-full
-              span.category.mb-5
-                | Sports
-              .post-meta
-                span.author.mr-2
-                  img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                  |  Colorlib
-                | ? 
-                span.mr-2
-                  | March 15, 2018 
-                |  ? 
-                span.ml-2
-                  span.fa.fa-comments
-                  |  3
-              h3
-                | How to Find the Video Games of Your Youth
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!
+          - @newest_posts.each do |post|
+            div
+              a.a-block.d-flex.align-items-center.height-lg[href="#{post_path(post)}" style="background-image: url('#{rails_blob_path(post.feature_image)}'); "]
+                .text.half-to-full
+                  .post-meta
+                    span.author.mr-2
+                      =  post.user.name
+                    | • 
+                    span.mr-2
+                      = post.created_at.strftime('%B %d, %Y')
+                    | •
+                    span.ml-2
+                      span.fa.fa-comments  #{post.comments_count}
+                  h3
+                    = post.title.truncate(30)
+                  p
+                    = post.body.to_plain_text.truncate(100)
 section.site-section.py-sm
     .container
       .row
-        .col-md-6
+        .col-md-8
           h2.mb-4
             | Latest Posts
+        .col-md-4
+          = form_with method: :get, data: { remote: false } do |f|
+            = select_tag(:sort_by,
+                options_for_select( PostFillter.form_items, params[:sort_by]),
+                { class: 'form-control', onchange: 'this.form.submit();' })
       .row.blog-entries
-        .col-md-12.col-lg-8.main-content
+        .col-md-12.col-lg-12.main-content
           .row
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="images/img_9.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="images/img_10.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="images/img_11.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
-            .col-md-6
-              a.blog-entry.element-animate[href="blog-single.html" data-animate-effect="fadeIn"]
-                img[src="images/img_12.jpg" alt="Image placeholder"]
-              .blog-content-body
-                .post-meta
-                  span.author.mr-2
-                    img[src="https://i.imgur.com/v1mEgOd.jpg" alt="Colorlib"]
-                    |  Colorlib
-                  | ? 
-                  span.mr-2
-                    | March 15, 2018 
-                  |  ? 
-                  span.ml-2
-                    span.fa.fa-comments
-                    |  3
-                h2
-                  | How to Find the Video Games of Your Youth
+            - if @posts.present?
+              - @posts.each do |post|
+                .col-md-4
+                  a.blog-entry.element-animate[href="#{post_path(post)}" data-animate-effect="fadeIn"]
+                    .fit-image
+                      = image_tag post.feature_image if post.feature_image.attached?
+                    .blog-content-body
+                      .post-meta
+                        span.author.mr-2
+                          =  post.user.name
+                        | • 
+                        span.mr-2
+                          = post.created_at.strftime('%B %d, %Y')
+                        | •
+                        span.ml-2
+                          span.fa.fa-comments  #{post.comments_count}
+                      h2
+                        = post.title.truncate(30)
+            - else
+              .col-md-12
+                h3.text-center Not Found Data
           .row.mt-5
-            .col-md-12.text-center
-              nav.text-center[aria-label="Page navigation"]
-                ul.pagination
-                  li.page-item.active
-                    a.page-link[href="#"]
-                      | <
-                  li.page-item
-                    a.page-link[href="#"]
-                      | 1
-                  li.page-item
-                    a.page-link[href="#"]
-                      | 2
-                  li.page-item
-                    a.page-link[href="#"]
-                      | 3
-                  li.page-item
-                    a.page-link[href="#"]
-                      | 4
-                  li.page-item
-                    a.page-link[href="#"]
-                      | 5
-                  li.page-item
-                    a.page-link[href="#"]
-                      | >
-        .col-md-12.col-lg-4.sidebar
-          .sidebar-box.search-form-wrap
-            form.search-form[action="#"]
-              .form-group
-                span.icon.fa.fa-search
-                input#s.form-control[type="text" placeholder="Type a keyword and hit enter"]
-          .sidebar-box
-            .bio.text-center
-              img.img-fluid[src="images/person_1.jpg" alt="Image Placeholder"]
-              .bio-body
-                h2
-                  | David Craig
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.
-                p
-                  a.btn.btn-primary.btn-sm.rounded[href="#"]
-                    | Read my bio
-                p.social
-                  a.p-2[href="#"]
-                    span.fa.fa-facebook
-                  a.p-2[href="#"]
-                    span.fa.fa-twitter
-                  a.p-2[href="#"]
-                    span.fa.fa-instagram
-                  a.p-2[href="#"]
-                    span.fa.fa-youtube-play
-          .sidebar-box
-            h3.heading
-              | Popular Posts
-            .post-entry-sidebar
-              ul
-                li
-                  a[href=""]
-                    img.mr-4[src="images/img_2.jpg" alt="Image placeholder"]
-                  .text
-                    h4
-                      | How to Find the Video Games of Your Youth
-                    .post-meta
-                      span.mr-2
-                        | March 15, 2018 
-                li
-                  a[href=""]
-                    img.mr-4[src="images/img_4.jpg" alt="Image placeholder"]
-                  .text
-                    h4
-                      | How to Find the Video Games of Your Youth
-                    .post-meta
-                      span.mr-2
-                        | March 15, 2018 
-                li
-                  a[href=""]
-                    img.mr-4[src="images/img_12.jpg" alt="Image placeholder"]
-                  .text
-                    h4
-                      | How to Find the Video Games of Your Youth
-                    .post-meta
-                      span.mr-2
-                        | March 15, 2018 
-          .sidebar-box
-            h3.heading
-              | Categories
-            ul.categories
-              li
-                a[href="#"]
-                  | Food 
-                  span
-                    | (12)
-              li
-                a[href="#"]
-                  | Travel 
-                  span
-                    | (22)
-              li
-                a[href="#"]
-                  | Lifestyle 
-                  span
-                    | (37)
-              li
-                a[href="#"]
-                  | Business 
-                  span
-                    | (42)
-              li
-                a[href="#"]
-                  | Adventure 
-                  span
-                    | (14)
-          .sidebar-box
-            h3.heading
-              | Tags
-            ul.tags
-              li
-                a[href="#"]
-                  | Travel
-              li
-                a[href="#"]
-                  | Adventure
-              li
-                a[href="#"]
-                  | Food
-              li
-                a[href="#"]
-                  | Lifestyle
-              li
-                a[href="#"]
-                  | Business
-              li
-                a[href="#"]
-                  | Freelancing
-              li
-                a[href="#"]
-                  | Travel
-              li
-                a[href="#"]
-                  | Adventure
-              li
-                a[href="#"]
-                  | Food
-              li
-                a[href="#"]
-                  | Lifestyle
-              li
-                a[href="#"]
-                  | Business
-              li
-                a[href="#"]
-                  | Freelancing
-  
+            = paginate @posts, outer_window: 3
