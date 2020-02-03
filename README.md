@@ -19,6 +19,7 @@ Welcome to Bac3Phi
   - run `git clone https://github.com/Bac3Phi/rth_blog_test.git`
   - run `bundle install --path vendor/bundle `
   - run `yarn install --check-files`
+  - create `.env` in project, fill all field as `.envrc`
   - run `rails db:create` , `rails db:migrate` , ` rails db:seed` or run `rails db:setup`
 * API ( https://bac3phi-blog.herokuapp.com/api/v1/posts )
 when you signed in, please check "API TOKEN" in a nav bar. Submit API TOKEN to API with Header name `Authorization`
