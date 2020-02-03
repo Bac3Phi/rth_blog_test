@@ -21,7 +21,6 @@ Welcome to Bac3Phi
   - run `yarn install --check-files`
   - run `rails db:create` , `rails db:migrate` , ` rails db:seed` or run `rails db:setup`
 * API ( https://bac3phi-blog.herokuapp.com/api/v1/posts )
-
 when you signed in, please check "API TOKEN" in a nav bar. Submit API TOKEN to API with Header name `Authorization`
 
   - POST   /api/v1/posts/:id/create_comment
@@ -33,7 +32,7 @@ when you signed in, please check "API TOKEN" in a nav bar. Submit API TOKEN to A
   - PATCH  /api/v1/posts/:id
   - PUT    /api/v1/posts/:id
   - DELETE /api/v1/posts/:id
-
+  - Within search make a request to `GET /api/v1/posts` with params as `q[title_cont]: your_data`, you can search for more with ransack params
 * Problems
   - Heroku just allow save local image for a short time period
-  
+  - In this time, Ransack not support ActionText for search
