@@ -53,6 +53,7 @@ class Api::V1::PostsController < Api::V1::ApiController
   def comment_params
     param = {}
     param[:content] = params[:content]
+    param[:user_id] = current_user.id
 
     param
   end
