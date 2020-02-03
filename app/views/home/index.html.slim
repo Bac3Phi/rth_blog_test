@@ -3,7 +3,7 @@ section.site-section.pt-5.pb-5
     .row
       .col-md-12
         .owl-carousel.owl-theme.home-slider
-          - @newest_posts.each do |post|
+          - @impressed_posts.each do |post|
             div
               a.a-block.d-flex.align-items-center.height-lg[href="#{post_path(post)}" style="background-image: url('#{rails_blob_path(post.feature_image)}'); "]
                 .text.half-to-full

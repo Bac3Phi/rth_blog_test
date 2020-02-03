@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   resources :posts do
     post :create_comment, on: :member
   end
-
+  
   namespace :api do
     namespace :v1 do
-      resources :posts
+      resources :posts do
+        post :create_comment, on: :member
+      end
     end
   end
 end

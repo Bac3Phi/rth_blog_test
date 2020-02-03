@@ -5,10 +5,11 @@ class Post < ApplicationRecord
   has_rich_text :body
 
   validates_presence_of :body, :title
-  validates_length_of :title, maximum: 100
+  validates_length_of :title, maximum: 200
 
   after_commit :add_default_feature_image, on: [:create, :update]
 
+  scope :impressed_posts, -> { list([], comments_count: DESC) }
   scope :newest_posts, -> { list([]) }
   scope :list, -> (conditions, order = nil, include_items = nil) do
     include_items ||= [:rich_text_body, :user, feature_image_attachment: [:blob]]

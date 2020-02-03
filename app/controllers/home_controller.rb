@@ -1,14 +1,12 @@
 class HomeController < ApplicationController
   def index
-    newest_posts = Post.newest_posts
-    @newest_posts = newest_posts.limit(3)
+    @impressed_posts = Post.impressed_posts.limit(3)
 
-    @search = newest_posts.ransack(params[:q])
+    @search = Post.newest_posts.ransack(params[:q])
     posts = @search.result.page(params[:page]).per(EasySettings.paging.per)
     service = PostService.new(relation: posts)
 
     @posts = service.search(search_params)
-    @search_params = search_params
   end
 
   private
