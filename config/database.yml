@@ -25,4 +25,3 @@ test:
 
 production:
   <<: *default
-  database: rth_blog_production
