@@ -1,9 +1,9 @@
 ul.comment-list
-  - post.comments.each do | comment |
+  - post.comments.includes(:user).each do | comment |
     li.comment
       .comment-body
         h3
-          = comment.post.user.name
+          = comment.user.name
         .meta
           = comment.created_at.strftime('%B %d, %Y AT %H:%M%p')
         p
