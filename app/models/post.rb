@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   after_commit :add_default_feature_image, on: [:create, :update]
 
-  scope :impressed_posts, -> { list([], comments_count: DESC) }
+  scope :impressed_posts, -> { list([], comments_count: :DESC) }
   scope :newest_posts, -> { list([]) }
   scope :list, -> (conditions, order = nil, include_items = nil) do
     include_items ||= [:rich_text_body, :user, feature_image_attachment: [:blob]]
