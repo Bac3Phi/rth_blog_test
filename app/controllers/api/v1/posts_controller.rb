@@ -1,10 +1,11 @@
-class Api::V1::PostsController < Api::V1::ApplicationController
+class Api::V1::PostsController < Api::V1::ApiController
   before_action :authenticate_user_from_token
   before_action :find_post, only: [:show, :edit, :update, :destroy, :create_comment]
 
   def index
     @search = current_user.posts.newest_posts.ransack(params[:q])
     @posts = @search.result.page(params[:page]).per(EasySettings.paging.per)
+
     render json: @posts
   end
 
