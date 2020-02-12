@@ -1,6 +1,5 @@
 # README
 Product Link: https://bac3phi-blog.herokuapp.com/
-Welcome to Bac3Phi
 * Ruby version
   - Ruby 2.6.0
   - Rails 6.0.2
